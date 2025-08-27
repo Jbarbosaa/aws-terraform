@@ -1,7 +1,7 @@
 # Get latest AMI ID for amazon Linux2 OS
 
 data "aws_ami" "amzlinux2" {
-    executable_users = ["self"]
+    # executable_users = ["self"]
     most_recent = true
     owners = ["amazon"]
 
@@ -12,15 +12,16 @@ data "aws_ami" "amzlinux2" {
 
     filter {
       name = "architecture"
-      values = "x86_64"  
+      values = ["x86_64"]  
     }
 
     filter {
       name = "root-device-type"
-      values = "ebs"
+      values = ["ebs"]
     }
+
     filter {
       name = "virtualization-type"
-      values = "hvm"
+      values = ["hvm"]
     }
 }

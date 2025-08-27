@@ -15,7 +15,6 @@ variable "instance_type" {
     description = "EC2 Instance type"
     type = string
     default = "t3.micro"
-    sensitive = true
 }
 
 #AWS EC2 Instance Key Pair
@@ -24,4 +23,5 @@ variable "instance_keypair" {
     description = "AWS EC2 Key Pair that need to be associated with ec2 instance"
     type = string
     default = "terraform-aws"
+    sensitive = true
 }
