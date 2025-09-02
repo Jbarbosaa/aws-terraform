@@ -1,5 +1,5 @@
 # Datasource
-data "aws_availability_zones" "myazones" {
+data "aws_availability_zones" "my_azones" {
     state = "available"
     filter {
         name = "opt-in-status"
@@ -26,20 +26,20 @@ data "aws_ec2_instance_type_offerings" "my_inst_type" {
 # Basic Output
 output "instance_types_by_az" {
     value = {
-        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_type
+        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_types
     }
 }
 
 output "available_instance_types" {
     description = "Instance types available per AZ, excluding empty results"
     value = {
-        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_type if length(details.instance_type) != 0
+        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_types if length(details.instance_types) != 0
     }
 }
 output "available_az_keys" {
     description = "Lists availability zones with non-empty instance types"
     value = keys({
-        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_type if length(details.instance_type) != 0
+        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_types if length(details.instance_types) != 0
     })
 }
 
