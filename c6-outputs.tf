@@ -13,7 +13,7 @@ output "instance_publicip" {
 #EC2 Instance Public DNS with TOSET 
 
 output "instance_publicdns" {
-    description = "EC2 Instance Public IDNS"
+    description = "EC2 Instance Public DNS"
     value = toset ([
         for myec2vm in aws_instance.myec2vm : myec2vm.public_dns
     ])
@@ -23,7 +23,7 @@ output "instance_publicdns" {
 
 output "for_output_list" {
     description = "For loop with List"
-    value = [for instance in aws_instance.myec2vm: instance_publicdns]
+    value = [for instance in aws_instance.myec2vm: instance.public_dns]
   
 }
 
@@ -37,6 +37,6 @@ output "for_output_map1" {
 #Output - For loop with Map Advanced
 output "for_output_map2" {
     description = "For loop with Map - Advanced"
-    value = {for c, instance in aws_aws_instance.myec2vm: c => instance_publicdns}
+    value = {for idx, instance in aws_instance.myec2vm: idx => instance.public_dns}
   
 }
