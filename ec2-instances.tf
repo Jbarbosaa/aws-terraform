@@ -1,7 +1,7 @@
 # Resource block
 resource "aws_instance" "myec2vm" {
     for_each = toset (keys ({
-        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_type if length(details.instance_type) !=0 }))
+        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_types if length(details.instance_types) !=0 }))
 
     availability_zone = each.key
 
