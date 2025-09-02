@@ -25,3 +25,24 @@ variable "instance_keypair" {
     default = "terraform-aws"
     sensitive = true
 }
+
+#AWS EC2 Variable list
+
+variable "instance_type_list" {
+    description = "EC2 Instance type list"
+    type = list(string)
+    default = ["t3.micro", "t3.small", "t3.large"]
+}
+
+#AWS EC2 Variable map
+
+variable "instance_type_map" {
+    description = "EC2 Instance type map"
+    type = map(string)
+    default = {
+      "dev" = "t3.micro"
+      "qa" = "t3.small"
+      "prd" = "t3.large"    
+    }
+  
+}
