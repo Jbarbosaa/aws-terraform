@@ -9,7 +9,7 @@ data "aws_availability_zones" "myazones" {
 
 #Datasource-2
 data "aws_ec2_instance_type_offerings" "my_inst_type" {
-    for_each = toset([data.aws_availability_zones.my_azones.names])
+    for_each = toset(data.aws_availability_zones.my_azones.names)
     filter {
         name = "instance-type"
         values = ["t3.micro"]
