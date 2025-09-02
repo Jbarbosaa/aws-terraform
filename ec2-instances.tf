@@ -1,12 +1,3 @@
-#Disponible AZs
-data "aws_availability_zones" "my_azones" {
-    state = "available"
-    filter {
-      name = "opt-in-status"
-      values = [ "opt-in-not-required" ]
-    }
-}
-
 # Resource block
 resource "aws_instance" "myec2vm" {
     for_each = toset (keys ({
