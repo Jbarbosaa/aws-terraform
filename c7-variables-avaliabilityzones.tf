@@ -23,19 +23,8 @@ data "aws_ec2_instance_type_offerings" "my_inst_type" {
     location_type = "availability-zone"
 }
 
-# Basic Output
-output "instance_types_by_az" {
-    value = {
-        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_types
-    }
-}
+# Output - List of availability zones with non-empty instance types
 
-output "available_instance_types" {
-    description = "Instance types available per AZ, excluding empty results"
-    value = {
-        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_types if length(details.instance_types) != 0
-    }
-}
 output "available_az_keys" {
     description = "Lists availability zones with non-empty instance types"
     value = keys({
@@ -43,4 +32,20 @@ output "available_az_keys" {
     })
 }
 
+# Basic Output
+
+//output "instance_types_by_az" {
+//   value = {
+//       for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_types
+//   }
+//}
+
+# Advanced Output - Exclude empty results
+
+//output "available_instance_types" {
+//    description = "Instance types available per AZ, excluding empty results"
+//    value = {
+//        for az, details in data.aws_ec2_instance_type_offerings.my_inst_type: az => details.instance_types if length(details.instance_types) != 0
+//    }
+//}
 
