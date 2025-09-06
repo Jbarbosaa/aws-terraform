@@ -17,8 +17,8 @@ module "vpc" {
     #create_database_internet_gateway_route = var.create_database_internet_gateway_route
 
     # NAT Gateways - Outbound Communication for Private Subnets
-    enable_nat_gateway = var.enable_nat_gateway
-    single_nat_gateway = var.single_nat_gateway # one NAT Gateway for the entire VPC, not one per AZ (saves money)
+    enable_nat_gateway = var.create_enable_nat_gateway
+    single_nat_gateway = var.create_single_nat_gateway # one NAT Gateway for the entire VPC, not one per AZ (saves money)
 
     #VPC DNS Support
     enable_dns_hostnames = true
