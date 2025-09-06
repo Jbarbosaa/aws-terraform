@@ -31,13 +31,13 @@ output "vpc_database_subnets" {
 #NAT Gateway IDs
 output "vpc_nat_gateway_ids" {
     description = "The NAT Gateway IDs of the VPC"
-    value       = module.vpc.nat_gateway_ids
+    value       = module.vpc.natgw_ids
 }
 
 #NAT Gateway IPs
 output "vpc_nat_gateway_ips" {
     description = "The NAT Gateway IPs of the VPC"
-    value       = module.vpc.nat_gateway_ips
+    value       = module.vpc.nat_public_ips
 }
 
 #VPC AZs
