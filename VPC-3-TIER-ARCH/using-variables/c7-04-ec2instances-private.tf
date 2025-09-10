@@ -9,7 +9,7 @@ module "ec2_instance_private" {
     source  = "terraform-aws-modules/ec2-instance/aws"
     version = "6.1.1"
 
-    for_each = toset(module.vpc.private_subnets)
+    for_each = { for idx, subnet_id in module.vpc.private_subnets : idx => subnet_id }
 
     name                                = "${var.environment}-private-vm"
     ami                                 = data.aws_ami.amzlinux2.id
