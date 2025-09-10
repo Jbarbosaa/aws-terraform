@@ -12,8 +12,7 @@ module "ec2-instance_private" {
     for_each = toset(module.vpc.private_subnets)
 
     name                                = "${var.environment}-private-vm"
-    count                               = var.ec2_private_instance_count
-    ami                                 = data.aws_ami.amazon-linux.id
+    ami                                 = data.aws_ami.mzlinux2.id
     instance_type                       = var.ec2_instance_type
     key_name                            = var.ec2_key_name
     subnet_id                           = each.value
@@ -21,7 +20,7 @@ module "ec2-instance_private" {
     associate_public_ip_address         = true
     monitoring                          = false
     disable_api_termination             = false
-    user_data = file("${path.module}/app1-install.sh")
+    user_data = file("${path.module}/apache-install.sh")
     tags = merge(
         local.common_tags,
         {

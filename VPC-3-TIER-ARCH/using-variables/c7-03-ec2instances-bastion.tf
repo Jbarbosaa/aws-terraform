@@ -2,13 +2,13 @@
 
 #Bastion Host Instance - EC2 Instance that will be created in VPC Public Subnet
 
-module "ec2-instance" {
+module "ec2-public" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "6.1.1"
 
     name                                = "${var.environment}-bastion"
     count                               = 1
-    ami                                 = data.aws_ami.amazon-linux.id
+    ami                                 = data.aws_ami.mzlinux2.id
     instance_type                       = var.ec2_instance_type
     key_name                            = var.ec2_key_name
     subnet_id                           = element(module.vpc.public_subnets, 0)
@@ -23,5 +23,4 @@ module "ec2-instance" {
             Project = "MY-VPC-3 TIER ARCHITECTURE"
         }  
     )
-
 }

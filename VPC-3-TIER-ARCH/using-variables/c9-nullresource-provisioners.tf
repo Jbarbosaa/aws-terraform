@@ -33,11 +33,11 @@ resource "null_resource" "name" {
   }
 
 # Creation Time Provisioner - By default, provisioners run when a resource is created.
-  provisioner "local-exec" {
-    command = "echo Destroy time prov `date` >> /tmp/destroy-time.txt"
-    working_dir = "local-exec-output-files/"
-    when = destroy
-  }
+  //provisioner "local-exec" {
+  //  command = "echo Destroy time prov `date` >> /tmp/destroy-time.txt"
+  //  working_dir = "local-exec-output-files/"
+  //  when = destroy
+  //}
 }
 
 
