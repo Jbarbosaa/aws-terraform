@@ -8,7 +8,7 @@ module "ec2-public" {
 
     name                                = "${var.environment}-bastion"
     count                               = 1
-    ami                                 = data.aws_ami.mzlinux2.id
+    ami                                 = data.aws_ami.amzlinux2.id
     instance_type                       = var.ec2_instance_type
     key_name                            = var.ec2_key_name
     subnet_id                           = element(module.vpc.public_subnets, 0)

@@ -12,7 +12,7 @@ module "ec2-instance_private" {
     for_each = toset(module.vpc.private_subnets)
 
     name                                = "${var.environment}-private-vm"
-    ami                                 = data.aws_ami.mzlinux2.id
+    ami                                 = data.aws_ami.amzlinux2.id
     instance_type                       = var.ec2_instance_type
     key_name                            = var.ec2_key_name
     subnet_id                           = each.value
