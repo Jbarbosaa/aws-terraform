@@ -1,7 +1,7 @@
 # AWS EC2 Security Group Terraform Module
 # Security group for Public Bastion Hosts
 
-module "public-security-group" {
+module "public_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.3.0"
 

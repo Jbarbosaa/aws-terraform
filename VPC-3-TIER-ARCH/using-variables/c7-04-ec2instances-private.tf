@@ -2,7 +2,7 @@
 
 #Bastion Host Instance - EC2 Instance that will be created in VPC Public Subnet
 
-module "ec2-instance_private" {
+module "ec2_instance_private" {
 
     depends_on = [ module.vpc ] //depends on VPC module to provide internet to the private hosts, when the instance will use amazon repository
 

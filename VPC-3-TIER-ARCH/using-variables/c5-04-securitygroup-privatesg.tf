@@ -1,7 +1,7 @@
 # AWS EC2 Security Group Terraform Module
 # Security group for Private EC2 Instances Hosts
 
-module "private-security-group" {
+module "private_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.3.0"
 

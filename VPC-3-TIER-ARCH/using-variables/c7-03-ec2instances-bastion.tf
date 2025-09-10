@@ -2,7 +2,7 @@
 
 #Bastion Host Instance - EC2 Instance that will be created in VPC Public Subnet
 
-module "ec2-public" {
+module "ec2_public" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "6.1.1"
 
