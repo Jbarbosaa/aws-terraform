@@ -1,4 +1,4 @@
-resource "null_resource" "name" {
+resource "null_resource" "bastion_ready" {
     depends_on = [ 
         module.ec2_public
      ] //depends on IGW module to provide internet to the bastion host
@@ -7,12 +7,12 @@ resource "null_resource" "name" {
         type = "ssh"
         user = "ec2-user"
         host = aws_eip.bastion_eip.public_ip
-        private_key = file("../github/key/terraform-aws.pem")
+        private_key = file(local.ssh_private_key_path)
     }
   
   #file provisioner to copy file from local machine to remote machine
   provisioner "file" {
-    source      = "../github/key/terraform-aws.pem"
+    source      = local.ssh_private_key_path
     destination = "/tmp/terraform-aws.pem"
   }
 
@@ -27,7 +27,7 @@ resource "null_resource" "name" {
 
   #local-exec provisioner to run commands on local machine
   provisioner "local-exec" {
-    command = "echo Bastion Host is ready on `date` and you can connect using the following command: ssh -i ../github/key/terraform-aws.pem ec2-user@${aws_eip.bastion_eip.public_ip} >> /tmp/bastion-connection.txt"
+    command = "echo Bastion Host is ready on $(date) and you can connect using the following command: ssh -i ../github/key/terraform-aws.pem ec2-user@${aws_eip.bastion_eip.public_ip} >> /tmp/bastion-connection.txt"
     working_dir = "local-exec-output-files/"
     //on_failure = continue
   }
