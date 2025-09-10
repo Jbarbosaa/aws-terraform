@@ -45,3 +45,31 @@ output "vpc_azs" {
     description = "The Availability Zones of the VPC"
     value       = module.vpc.azs
 }
+
+output "public_security_group_id" {
+  description = "The ID of the public security group"
+  value       = module.public-security-group.security_group_id 
+
+}
+output "public_security_group_vpc_id" {
+  description = "The VPC ID of the public security group"
+  value       = module.public-security-group.security_group_vpc_id
+}
+output "public_security_group_name" {
+  description = "The name of the public security group"
+  value       = module.public-security-group.security_group_name
+}
+
+output "private_security_group_id" {
+  description = "The ID of the private security group"
+  value       = module.private-security-group.security_group_id 
+
+}
+output "private_security_group_vpc_id" {
+  description = "The VPC ID of the private security group"
+  value       = module.private-security-group.security_group_vpc_id
+}
+output "private_security_group_name" {
+  description = "The name of the private security group"
+  value       = module.private-security-group.security_group_name
+}
