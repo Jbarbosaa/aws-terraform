@@ -18,3 +18,10 @@ variable "ec2_private_instance_count" {
     type        = number
     default     = 2
 }
+#SSH Private Key Path
+variable "ssh_private_key_path" {
+    description = "Path to the SSH private key file"
+    type        = string
+    default     = "~/.ssh/terraform-aws.ppk"
+  
+}

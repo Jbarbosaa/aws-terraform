@@ -70,10 +70,3 @@ variable "create_single_nat_gateway" {
     type        = bool
     default     = true
 }
-
-variable "ssh_private_key_path" {
-    description = "Path to the SSH private key file"
-    type        = string
-    default     = "~/.ssh/terraform-aws.ppk"
-  
-}
