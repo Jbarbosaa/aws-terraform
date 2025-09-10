@@ -12,7 +12,7 @@ module "ec2_public" {
     instance_type                       = var.ec2_instance_type
     key_name                            = var.ec2_key_name
     subnet_id                           = element(module.vpc.public_subnets, 0)
-    vpc_security_group_ids              = [module.public-security-group.security_group_id]
+    vpc_security_group_ids              = [module.public_security_group.security_group_id]
     associate_public_ip_address         = true
     monitoring                          = false
     disable_api_termination             = false

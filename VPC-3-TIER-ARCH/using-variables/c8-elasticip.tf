@@ -5,9 +5,9 @@ resource "aws_eip" "bastion_eip" {
 
     depends_on = [ 
         module.vpc,
-        module.ec2-public
+        module.ec2_public
     ] //depends on IGW module to provide internet to the bastion host
-    instance = module.ec2-public.id
+    instance = module.ec2_public.id
     domain   = "vpc"
 
   tags = merge(
