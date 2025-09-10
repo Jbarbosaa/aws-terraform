@@ -27,8 +27,14 @@ resource "null_resource" "bastion_ready" {
 
   #local-exec provisioner to run commands on local machine
   provisioner "local-exec" {
-    command = "echo Bastion Host is ready on $(date) and you can connect using the following command: ssh -i ../github/key/terraform-aws.pem ec2-user@${aws_eip.bastion_eip.public_ip} >> /tmp/bastion-connection.txt"
-    working_dir = "local-exec-output-files/"
+    interpreter = [ "/bin/bash", "-c" ]
+    command = "mkdir -p ${path.module}/local-exec-output-files"
+
+  }
+  provisioner "local-exec" {
+    interpreter = [ "/bin/bash", "-c" ]
+    working_dir = "${path.module}/local-exec-output-files/"
+    command = "echo Bastion Host is ready on $(date) and you can connect using the following command: ssh -i ${local.ssh_private_key_path} ec2-user@${aws_eip.bastion_eip.public_ip} >> bastion-connection-info.txt"
     //on_failure = continue
   }
 

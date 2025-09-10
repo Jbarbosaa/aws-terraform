@@ -30,5 +30,3 @@ module "ec2_instance_private" {
     )
 
 }
-
-#Meta-arguments depends on
