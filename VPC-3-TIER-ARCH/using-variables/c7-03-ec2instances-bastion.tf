@@ -7,7 +7,6 @@ module "ec2_public" {
   version = "6.1.1"
 
     name                                = "${var.environment}-bastion"
-    count                               = 1
     ami                                 = data.aws_ami.amzlinux2.id
     instance_type                       = var.ec2_instance_type
     key_name                            = var.ec2_key_name

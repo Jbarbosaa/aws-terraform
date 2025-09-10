@@ -79,5 +79,5 @@ output "private_security_group_name" {
 
 output "latest_amazon_linux_2_ami_id" {
   description = "The latest Amazon Linux 2 AMI ID"
-  value       = data.aws_ami.latest_amazon_linux_2.id
+  value       = data.aws_ami.amzlinux2.id
 }

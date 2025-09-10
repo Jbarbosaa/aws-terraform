@@ -16,7 +16,7 @@ module "ec2_instance_private" {
     instance_type                       = var.ec2_instance_type
     key_name                            = var.ec2_key_name
     subnet_id                           = each.value
-    vpc_security_group_ids              = [module.private-security-group.security_group_id]
+    vpc_security_group_ids              = [module.private_security_group.security_group_id]
     associate_public_ip_address         = true
     monitoring                          = false
     disable_api_termination             = false
